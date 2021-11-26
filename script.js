@@ -26,11 +26,9 @@ function playRound(playerSelection, computerSelection) {
     const losingPhrase = `You lose: ${computerSelection} beats ${playerSelection}!`;
     const tiePhrase = `You tied! Both of you picked ${playerSelection}!`
 
-    if (playerSelection === "rock" && computerSelection === "scissors") {
-        return winningPhrase;
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return winningPhrase;
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
+    if ((playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "scissors" && computerSelection === "paper") ||
+        (playerSelection === "paper" && computerSelection === "rock")) {
         return winningPhrase;
     } else if (playerSelection === computerSelection) {
         return tiePhrase;
