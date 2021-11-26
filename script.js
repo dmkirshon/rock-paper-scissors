@@ -3,8 +3,7 @@
 */
 
 // initilize player selection and computer selection and gameStatus
-let playerSelection;
-let computerSelection;
+
 
 // computerPlay returns a random choice of rock, paper or scissors
 function computerPlay() {
@@ -37,10 +36,10 @@ function playRound(playerSelection, computerSelection) {
     return roundResult;
 }
 
-function getRoundPhrase(result, playerSelection, computerSelection){
+function getRoundPhrase(result, playerSelection, computerSelection) {
     let roundPhrase;
 
-    switch (result){
+    switch (result) {
         case 1:
             roundPhrase = `You win: ${playerSelection} beats ${computerSelection}!`;
             break;
@@ -50,30 +49,38 @@ function getRoundPhrase(result, playerSelection, computerSelection){
         case -1:
             roundPhrase = `You lose: ${computerSelection} beats ${playerSelection}!`;
     }
-    
+
     return roundPhrase;
 }
 
 // create a game running through playRound 5 times, keeps score and reports a winner
 
 function playGame() {
-    let gameScore = 0;
-    let roundResult;
-    let roundPhrase;
 
-    for(let i = 1; i <= 5; i++) {
-        do {
-        playerSelection = prompt(`Round ${i} Choose: rock, paper, or scissors!`,"rock").toLowerCase();
-        computerSelection = computerPlay();
+    let playerScore = 0;
+    let computerScore = 0;
 
-        roundResult = playRound(playerSelection, computerSelection);
-        roundPhrase = getRoundPhrase(roundResult, playerSelection, computerSelection);
-        console.log(`Round ${i}: ` + roundPhrase);
-        gameScore += roundResult;
+    for (let i = 1; i <= 5; i++) {
+        let roundResult = 0;
+        let roundPhrase;
+
+        while (roundResult == 0 && (playerScore < 3 && computerScore > -3)) {
+            const playerSelection = prompt(`Round ${i} Choose: rock, paper, or scissors!`, "rock").toLowerCase();
+            const computerSelection = computerPlay();
+
+            roundResult = playRound(playerSelection, computerSelection);
+            roundPhrase = getRoundPhrase(roundResult, playerSelection, computerSelection);
+            console.log(`Round ${i}: ` + roundPhrase);
+
+            if (roundResult === 1) {
+                playerScore += roundResult;
+            } else {
+                computerScore += roundResult;
+            }
         }
-        while(roundResult === 0);
     }
-    if (gameScore > 0) {
+
+    if (playerScore > 2) {
         console.log("You won the game!");
     } else {
         console.log("You lost the game!");
