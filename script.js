@@ -41,13 +41,13 @@ function getRoundPhrase(result, playerSelection, computerSelection){
     let roundPhrase;
 
     switch (result){
-        case "win":
+        case 1:
             roundPhrase = `You win: ${playerSelection} beats ${computerSelection}!`;
             break;
-        case "tie":
+        case 0:
             roundPhrase = `You tied! Both of you picked ${playerSelection}!`;
             break;
-        case "lose":
+        case -1:
             roundPhrase = `You lose: ${computerSelection} beats ${playerSelection}!`;
     }
     
