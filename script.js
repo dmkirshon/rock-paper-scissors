@@ -27,11 +27,11 @@ function playRound(playerSelection, computerSelection) {
     if ((playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "scissors" && computerSelection === "paper") ||
         (playerSelection === "paper" && computerSelection === "rock")) {
-        roundResult = "win";
+        roundResult = 1;
     } else if (playerSelection === computerSelection) {
-        roundResult = "tie";
+        roundResult = 0;
     } else {
-        roundResult = "lose";
+        roundResult = -1;
     }
 
     return getRoundPhrase(roundResult, playerSelection, computerSelection);
