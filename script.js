@@ -5,7 +5,6 @@
 // initilize player selection and computer selection and gameStatus
 let playerSelection;
 let computerSelection;
-let gameStatus;
 
 // computerPlay returns a random choice of rock, paper or scissors
 function computerPlay() {
@@ -25,7 +24,7 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     const winningPhrase = `You win: ${playerSelection} beats ${computerSelection}!`;
     const losingPhrase = `You lose: ${computerSelection} beats ${playerSelection}!`;
-    const tiePhrase = `You tied! Both of you picked ${playerSelection}`
+    const tiePhrase = `You tied! Both of you picked ${playerSelection}!`
 
     if (playerSelection === "rock" && computerSelection === "scissors") {
         return winningPhrase;
@@ -40,5 +39,29 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(playRound("rock",computerPlay()));
 // create a game running through playRound 5 times, keeps score and reports a winner
+
+function game() {
+    let gameScore = 0;
+    let roundStatus;
+
+    for(let i = 1; i <= 5; i++) {
+        do {
+        playerSelection = prompt(`Round ${i} Choose: rock, paper, or scissors!`,"rock").toLowerCase();
+        computerSelection = computerPlay();
+
+        roundStatus = playRound(playerSelection, computerSelection);
+        const roundStatusResult = roundStatus.includes("win");
+        console.log(`Round ${i}: ` + roundStatus);
+        gameScore += roundStatusResult;
+        }
+        while(roundStatus.includes("tie"));
+    }
+    if (gameScore > 2) {
+        console.log("You won the game!");
+    } else {
+        console.log("You lost the game!");
+    }
+}
+
+game();
