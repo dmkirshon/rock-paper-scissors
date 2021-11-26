@@ -34,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
         roundResult = -1;
     }
 
-    return getRoundPhrase(roundResult, playerSelection, computerSelection);
+    return roundResult;
 }
 
 function getRoundPhrase(result, playerSelection, computerSelection){
