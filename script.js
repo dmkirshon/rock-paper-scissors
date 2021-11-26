@@ -14,6 +14,30 @@ function computerPlay() {
         return "scissors"
     }
 }
+/** Prompts the player for a selection of rock, paper, or scissors.
+ * If a bad response is given the player is alerted and asked again.
+ * If user cancels return null.
+ */
+function getPlayerSelection(round) {
+    const promptVal = prompt(`Round ${round} Choose: rock, paper, or scissors!`
+            , "rock");
+
+    if(promptVal === null || promptVal === undefined) {
+        return null;
+    }
+
+    const playerSelection = promptVal.toLowerCase();
+    if (playerSelection === "rock" ||
+        playerSelection === "paper" ||
+        playerSelection === "scissors") {
+            return playerSelection;
+        } 
+    else{
+        alert("Incorrect value given!");
+        return getPlayerSelection(round);
+    }
+
+}
 
 /** playRound function which will play through one round, will take in 
 * playerSelection and computerSelection, return string declaring winner
@@ -59,15 +83,19 @@ function playGame() {
 
     let playerScore = 0;
     let computerScore = 0;
-    
+
     for (let i = 1; i <= 5; i++) {
         let roundResult = 0;
         let roundPhrase;
         // Run through a round, if tied repeat the round
         while (roundResult == 0) {
-            const playerSelection = prompt(`Round ${i} Choose: rock, paper,` +
-                ` or scissors!`, "rock").toLowerCase();
+            const playerSelection = getPlayerSelection(i);
             const computerSelection = computerPlay();
+            
+            // player cancels causes loss of round
+            if (playerSelection === null) {
+                break;
+            }
 
             // play a round of rock paper scissors and display winner
             roundResult = playRound(playerSelection, computerSelection);
