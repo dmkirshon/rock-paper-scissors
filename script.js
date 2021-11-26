@@ -58,19 +58,18 @@ function getRoundPhrase(result, playerSelection, computerSelection){
 
 function game() {
     let gameScore = 0;
-    let roundStatus;
+    let roundResult;
 
     for(let i = 1; i <= 5; i++) {
         do {
         playerSelection = prompt(`Round ${i} Choose: rock, paper, or scissors!`,"rock").toLowerCase();
         computerSelection = computerPlay();
 
-        roundStatus = playRound(playerSelection, computerSelection);
-        const roundStatusResult = roundStatus.includes("win");
-        console.log(`Round ${i}: ` + roundStatus);
-        gameScore += roundStatusResult;
+        roundResult = playRound(playerSelection, computerSelection);
+        console.log(`Round ${i}: ` + roundResult);
+        gameScore += roundResult;
         }
-        while(roundStatus.includes("tie"));
+        while(roundResult === 0);
     }
     if (gameScore > 2) {
         console.log("You won the game!");
