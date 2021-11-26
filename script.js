@@ -2,7 +2,7 @@
  *   This is the javascript file for the Rock Paper Scissors Console Game.
 */
 
-/** computerPlay returns a random choice of rock, paper or scissors*/ 
+/** computerPlay returns a random choice of rock, paper or scissors*/
 function computerPlay() {
     const randomValue = Math.floor(Math.random() * 3) + 1;
 
@@ -59,28 +59,33 @@ function playGame() {
 
     let playerScore = 0;
     let computerScore = 0;
-
+    
     for (let i = 1; i <= 5; i++) {
         let roundResult = 0;
         let roundPhrase;
-
-        while (roundResult == 0 && (playerScore < 3 && computerScore > -3)) {
+        // Run through a round, if tied repeat the round
+        while (roundResult == 0) {
             const playerSelection = prompt(`Round ${i} Choose: rock, paper,` +
-            ` or scissors!`,"rock").toLowerCase();
+                ` or scissors!`, "rock").toLowerCase();
             const computerSelection = computerPlay();
 
             // play a round of rock paper scissors and display winner
             roundResult = playRound(playerSelection, computerSelection);
-            roundPhrase = getRoundPhrase(roundResult, playerSelection, 
+            roundPhrase = getRoundPhrase(roundResult, playerSelection,
                 computerSelection);
             console.log(`Round ${i}: ` + roundPhrase);
-            
+
             // Determines winner of the round
             if (roundResult === 1) {
                 playerScore += roundResult;
             } else {
                 computerScore += roundResult;
             }
+        }
+
+        // best of 5 rounds, winning 3 rounds wins game
+        if (playerScore >= 3 || computerScore <= -3) {
+            break;
         }
     }
 
@@ -90,8 +95,6 @@ function playGame() {
     } else {
         console.log("You lost the game!");
     }
-
-
 
 }
 
