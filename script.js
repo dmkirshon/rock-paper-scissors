@@ -22,19 +22,36 @@ function computerPlay() {
 // playRound function which will play through one round, will take in playerSelection and computerSelection, return string declaring winner
 
 function playRound(playerSelection, computerSelection) {
-    const winningPhrase = `You win: ${playerSelection} beats ${computerSelection}!`;
-    const losingPhrase = `You lose: ${computerSelection} beats ${playerSelection}!`;
-    const tiePhrase = `You tied! Both of you picked ${playerSelection}!`
+    let roundResult;
 
     if ((playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "scissors" && computerSelection === "paper") ||
         (playerSelection === "paper" && computerSelection === "rock")) {
-        return winningPhrase;
+        roundResult = "win";
     } else if (playerSelection === computerSelection) {
-        return tiePhrase;
+        roundResult = "tie";
     } else {
-        return losingPhrase;
+        roundResult = "lose";
     }
+
+    return getRoundPhrase(roundResult, playerSelection, computerSelection);
+}
+
+function getRoundPhrase(result, playerSelection, computerSelection){
+    let roundPhrase;
+
+    switch (result){
+        case "win":
+            roundPhrase = `You win: ${playerSelection} beats ${computerSelection}!`;
+            break;
+        case "tie":
+            roundPhrase = `You tied! Both of you picked ${playerSelection}!`;
+            break;
+        case "lose":
+            roundPhrase = `You lose: ${computerSelection} beats ${playerSelection}!`;
+    }
+    
+    return roundPhrase;
 }
 
 // create a game running through playRound 5 times, keeps score and reports a winner
