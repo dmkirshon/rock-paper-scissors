@@ -73,7 +73,7 @@ function game() {
         }
         while(roundResult === 0);
     }
-    if (gameScore > 2) {
+    if (gameScore > 0) {
         console.log("You won the game!");
     } else {
         console.log("You lost the game!");
