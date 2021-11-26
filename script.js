@@ -59,6 +59,7 @@ function getRoundPhrase(result, playerSelection, computerSelection){
 function game() {
     let gameScore = 0;
     let roundResult;
+    let roundPhrase;
 
     for(let i = 1; i <= 5; i++) {
         do {
@@ -66,7 +67,8 @@ function game() {
         computerSelection = computerPlay();
 
         roundResult = playRound(playerSelection, computerSelection);
-        console.log(`Round ${i}: ` + roundResult);
+        roundPhrase = getRoundPhrase(roundResult, playerSelection, computerSelection);
+        console.log(`Round ${i}: ` + roundPhrase);
         gameScore += roundResult;
         }
         while(roundResult === 0);
