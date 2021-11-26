@@ -58,6 +58,7 @@ function playRound(playerSelection, computerSelection) {
     return roundResult;
 }
 
+/** Return a phrase of win, tie, or loss based on param result*/
 function getRoundPhrase(result, playerSelection, computerSelection) {
     let roundPhrase;
 
@@ -91,7 +92,7 @@ function playGame() {
         while (roundResult == 0) {
             const playerSelection = getPlayerSelection(i);
             const computerSelection = computerPlay();
-            
+
             // player cancels causes loss of round
             if (playerSelection === null) {
                 break;
