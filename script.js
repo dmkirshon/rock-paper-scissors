@@ -56,7 +56,7 @@ function getRoundPhrase(result, playerSelection, computerSelection){
 
 // create a game running through playRound 5 times, keeps score and reports a winner
 
-function game() {
+function playGame() {
     let gameScore = 0;
     let roundResult;
     let roundPhrase;
@@ -80,4 +80,4 @@ function game() {
     }
 }
 
-game();
+playGame();
