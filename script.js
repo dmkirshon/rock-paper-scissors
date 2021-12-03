@@ -1,6 +1,11 @@
 /**
  *   This is the javascript file for the Rock Paper Scissors Console Game.
 */
+const buttonChoices = document.querySelectorAll('.btn');
+const buttonRock = document.querySelector('.btn.rock');
+const buttonPaper = document.querySelector('.paper');
+const buttonScissors = document.querySelector('.scissors');
+
 
 /** computerPlay returns a random choice of rock, paper or scissors*/
 function computerPlay() {
@@ -14,33 +19,20 @@ function computerPlay() {
         return "scissors"
     }
 }
-/** Prompts the player for a selection of rock, paper, or scissors.
- * If a bad response is given the player is alerted and asked again.
- * If user cancels return null.
+/** Player clicks a button and the function gets the value
  */
-function getPlayerSelection(round) {
-    const promptVal = prompt(`Round ${round} Choose: rock, paper, or scissors!`
-            , "rock");
+function getPlayerSelection(choice) {
 
-    if(promptVal === null || promptVal === undefined) {
-        return null;
-    }
-
-    const playerSelection = promptVal.toLowerCase();
+    const playerSelection = choice.toLowerCase();
     if (playerSelection === "rock" ||
         playerSelection === "paper" ||
         playerSelection === "scissors") {
             return playerSelection;
         } 
-    else{
-        alert("Incorrect value given!");
-        return getPlayerSelection(round);
-    }
-
 }
 
 /** playRound function which will play through one round, will take in 
-* playerSelection and computerSelection, return string declaring winner
+* playerSelection and computerSelection, return result
 */
 function playRound(playerSelection, computerSelection) {
     let roundResult;
@@ -85,46 +77,16 @@ function playGame() {
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let i = 1; i <= 5; i++) {
-        let roundResult = 0;
-        let roundPhrase;
-        // Run through a round, if tied repeat the round
-        while (roundResult == 0) {
-            const playerSelection = getPlayerSelection(i);
+    // play a Round of RPS when button is clicked
+    buttonChoices.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            const playerSelection = getPlayerSelection(e.target.textContent);
             const computerSelection = computerPlay();
-
-            // player cancels causes loss of round
-            if (playerSelection === null) {
-                break;
-            }
-
-            // play a round of rock paper scissors and display winner
-            roundResult = playRound(playerSelection, computerSelection);
-            roundPhrase = getRoundPhrase(roundResult, playerSelection,
-                computerSelection);
-            console.log(`Round ${i}: ` + roundPhrase);
-
-            // Determines winner of the round
-            if (roundResult === 1) {
-                playerScore += roundResult;
-            } else {
-                computerScore += roundResult;
-            }
-        }
-
-        // best of 5 rounds, winning 3 rounds wins game
-        if (playerScore >= 3 || computerScore <= -3) {
-            break;
-        }
-    }
-
-    // Determines winner of the game
-    if (playerScore > 2) {
-        console.log("You won the game!");
-    } else {
-        console.log("You lost the game!");
-    }
-
+            const roundResult = playRound(playerSelection, computerSelection);
+            const roundPhrase = getRoundPhrase(roundResult, playerSelection, computerSelection);
+            console.log(roundPhrase);
+        });
+    });
 }
 
 
