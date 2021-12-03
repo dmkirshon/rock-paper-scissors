@@ -2,7 +2,8 @@
  *   This is the javascript file for the Rock Paper Scissors Console Game.
 */
 const buttonChoices = document.querySelectorAll('.btn');
-const resultsDiv = document.querySelector('.results');
+const resultCommentaryPara = document.querySelector('.results-commentary');
+const resultScorePara = document.querySelector('.results-score');
 
 
 /** computerPlay returns a random choice of rock, paper or scissors*/
@@ -83,7 +84,22 @@ function playGame() {
             const roundResult = playRound(playerSelection, computerSelection);
             const roundPhrase = getRoundPhrase(roundResult, playerSelection, computerSelection);
             
-            resultsDiv.textContent = roundPhrase;
+            // Scores winner of the round
+            if (roundResult === 1) {
+                playerScore += roundResult;
+            } else {
+                computerScore -= roundResult;
+            }
+
+            resultCommentaryPara.textContent = roundPhrase;
+            resultScorePara.textContent = `Score: Player ${playerScore} Computer ${computerScore}`;
+
+            if(playerScore === 5) {
+                resultCommentaryPara.textContent = "You won the game!";
+            } else if(computerScore === 5){
+                resultCommentaryPara.textContent = "You lost the game!";
+            }
+
         });
     });
 }
