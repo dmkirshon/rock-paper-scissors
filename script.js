@@ -93,11 +93,14 @@ function playGame() {
 
             resultCommentaryPara.textContent = roundPhrase;
             resultScorePara.textContent = `Score: Player ${playerScore} Computer ${computerScore}`;
-
+            
+            // Ending of the game by disabling buttons
             if(playerScore === 5) {
                 resultCommentaryPara.textContent = "You won the game!";
+                buttonChoices.forEach(btn => {btn.disabled = true;})
             } else if(computerScore === 5){
                 resultCommentaryPara.textContent = "You lost the game!";
+                buttonChoices.forEach(btn => {btn.disabled = true;})
             }
 
         });
