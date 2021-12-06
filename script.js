@@ -54,6 +54,11 @@ function playRound(playerSelection, computerSelection) {
 /** Return a phrase of win, tie, or loss based on param result*/
 function getRoundPhrase(result, playerSelection, computerSelection) {
     let roundPhrase;
+    playerSelection = playerSelection[0].toUpperCase() + 
+    playerSelection.substring(1);
+
+    omputerSelection = computerSelection[0].toUpperCase() + 
+    computerSelection.substring(1);
 
     switch (result) {
         case 1:
