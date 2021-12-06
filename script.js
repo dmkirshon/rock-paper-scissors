@@ -4,6 +4,8 @@
 const buttonChoices = document.querySelectorAll('.btn');
 const resultCommentaryPara = document.querySelector('.results-commentary');
 const resultScorePara = document.querySelector('.results-score');
+const buttonReset = document.querySelector('.btn-reset');
+const disableChoices = (bool) => buttonChoices.forEach(btn => {btn.disabled = bool;})
 
 
 /** computerPlay returns a random choice of rock, paper or scissors*/
@@ -68,6 +70,36 @@ function getRoundPhrase(result, playerSelection, computerSelection) {
 }
 
 /**
+ * Score the RPS game based on playes and computers score
+ * Output a message saying who won
+ */
+function scoreGame(playerScore, computerScore){
+    if(playerScore === 5) {
+        resultCommentaryPara.textContent = "You won the game!";
+        disableChoices(true);
+        buttonReset.hidden = false;
+    } else if(computerScore === 5){
+        resultCommentaryPara.textContent = "You lost the game!";
+        disableChoices(true);
+        buttonReset.hidden = false;
+    }
+
+}
+
+
+/**
+ * When the reset 
+ */
+function resetGame(){
+    buttonReset.hidden = true;
+    disableChoices(false);
+    resultCommentaryPara.textContent = '';
+    resultScorePara.textContent = '';
+    playGame();
+}
+
+
+/**
  * Create a game running through playRound 5 times
  * Keeps score and reports a winner
  */
@@ -94,17 +126,16 @@ function playGame() {
             resultCommentaryPara.textContent = roundPhrase;
             resultScorePara.textContent = `Score: Player ${playerScore} Computer ${computerScore}`;
             
-            // Ending of the game by disabling buttons
-            if(playerScore === 5) {
-                resultCommentaryPara.textContent = "You won the game!";
-                buttonChoices.forEach(btn => {btn.disabled = true;})
-            } else if(computerScore === 5){
-                resultCommentaryPara.textContent = "You lost the game!";
-                buttonChoices.forEach(btn => {btn.disabled = true;})
+            // 5 point rounds played
+            if(playerScore === 5 || computerScore === 5) {
+                scoreGame(playerScore, computerScore);
             }
+            
 
         });
     });
+
+    buttonReset.addEventListener('click', resetGame);
 }
 
 
