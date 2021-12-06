@@ -88,7 +88,7 @@ function scoreGame(playerScore, computerScore){
 
 
 /**
- * When the reset 
+ * Reset the game as if they refreshed the page.
  */
 function resetGame(){
     buttonReset.hidden = true;
