@@ -5,8 +5,9 @@ const buttonChoices = document.querySelectorAll('.btn');
 const resultCommentaryPara = document.querySelector('.results-commentary');
 const resultScorePara = document.querySelector('.results-score');
 const buttonReset = document.querySelector('.btn-reset');
-const disableChoices = (bool) => buttonChoices.forEach(btn => {btn.disabled = bool;})
-
+const disableChoices = (bool) => buttonChoices.forEach(btn => { btn.disabled = bool; });
+let playerScore = 0;
+let computerScore = 0;
 
 /** computerPlay returns a random choice of rock, paper or scissors*/
 function computerPlay() {
@@ -17,7 +18,7 @@ function computerPlay() {
     } else if (randomValue === 2) {
         return "paper";
     } else if (randomValue === 3) {
-        return "scissors"
+        return "scissors";
     }
 }
 /** Player clicks a button and the function gets the value
@@ -28,8 +29,8 @@ function getPlayerSelection(choice) {
     if (playerSelection === "rock" ||
         playerSelection === "paper" ||
         playerSelection === "scissors") {
-            return playerSelection;
-        } 
+        return playerSelection;
+    }
 }
 
 /** playRound function which will play through one round, will take in 
@@ -54,11 +55,11 @@ function playRound(playerSelection, computerSelection) {
 /** Return a phrase of win, tie, or loss based on param result*/
 function getRoundPhrase(result, playerSelection, computerSelection) {
     let roundPhrase;
-    playerSelection = playerSelection[0].toUpperCase() + 
-    playerSelection.substring(1);
+    playerSelection = playerSelection[0].toUpperCase() +
+        playerSelection.substring(1);
 
-    omputerSelection = computerSelection[0].toUpperCase() + 
-    computerSelection.substring(1);
+    omputerSelection = computerSelection[0].toUpperCase() +
+        computerSelection.substring(1);
 
     switch (result) {
         case 1:
@@ -78,12 +79,12 @@ function getRoundPhrase(result, playerSelection, computerSelection) {
  * Score the RPS game based on playes and computers score
  * Output a message saying who won
  */
-function scoreGame(playerScore, computerScore){
-    if(playerScore === 5) {
+function scoreGame(playerScore, computerScore) {
+    if (playerScore === 5) {
         resultCommentaryPara.textContent = "You won the game!";
         disableChoices(true);
         buttonReset.hidden = false;
-    } else if(computerScore === 5){
+    } else if (computerScore === 5) {
         resultCommentaryPara.textContent = "You lost the game!";
         disableChoices(true);
         buttonReset.hidden = false;
@@ -95,12 +96,13 @@ function scoreGame(playerScore, computerScore){
 /**
  * Reset the game as if they refreshed the page.
  */
-function resetGame(){
+function resetGame() {
     buttonReset.hidden = true;
     disableChoices(false);
     resultCommentaryPara.textContent = '';
     resultScorePara.textContent = '';
-    playGame();
+    playerScore = 0;
+    computerScore = 0;
 }
 
 
@@ -110,9 +112,6 @@ function resetGame(){
  */
 function playGame() {
 
-    let playerScore = 0;
-    let computerScore = 0;
-
     // play a Round of RPS when button is clicked
     buttonChoices.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -120,7 +119,7 @@ function playGame() {
             const computerSelection = computerPlay();
             const roundResult = playRound(playerSelection, computerSelection);
             const roundPhrase = getRoundPhrase(roundResult, playerSelection, computerSelection);
-            
+
             // Scores winner of the round
             if (roundResult === 1) {
                 playerScore += roundResult;
@@ -130,13 +129,11 @@ function playGame() {
 
             resultCommentaryPara.textContent = roundPhrase;
             resultScorePara.textContent = `Score: Player ${playerScore} Computer ${computerScore}`;
-            
+
             // 5 point rounds played
-            if(playerScore === 5 || computerScore === 5) {
+            if (playerScore === 5 || computerScore === 5) {
                 scoreGame(playerScore, computerScore);
             }
-            
-
         });
     });
 
