@@ -1,0 +1,28 @@
+html {
+    box-sizing: border-box;
+  }
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  /* General Style */
+
+  html {
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
