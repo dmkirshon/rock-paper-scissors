@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    
+
     <!-- Roboto Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,32 +16,36 @@
 </head>
 
 <body>
-    <h1 class="title">Welcome to Rock Paper Scissors!</h1>
+    <div class="wrapper">
+        <h1 class="title">Welcome to Rock Paper Scissors!</h1>
 
-    <section class="instructions">
-        <h2>Instructions</h2>
-        <p class="instructions-description"> Choose an option below Rock, Paper, or Scissors. First to 5 wins it all!
-        </p>
-        <div class="instructions-choices">
-            <p class="instructions-choices-rock">Rock beats Scissors!</p>
-            <p class="instructions-choices-scissors">Scissors beats Paper!</p>
-            <p class="instructions-choices-paper">Paper beats Rock!</p>
+        <section class="instructions">
+            <h2>Instructions</h2>
+            <p class="instructions-description"> Choose an option below Rock, Paper, or Scissors. First to 5 wins it all!
+            </p>
+            <div class="instructions-choices">
+                <p class="instructions-choices-rock">Rock beats Scissors!</p>
+                <p class="instructions-choices-scissors">Scissors beats Paper!</p>
+                <p class="instructions-choices-paper">Paper beats Rock!</p>
+            </div>
+        </section>
+
+        <div class="btns">
+            <button class="btn rock">Rock
+                <img class="btn-rock-img" src="images/rock.png">
+            </button>
+            <button class="btn paper">Paper</button>
+            <button class="btn scissors">Scissors</button>
         </div>
-    </section>
 
-    <div class="btns">
-        <button class="btn rock">Rock</button>
-        <button class="btn paper">Paper</button>
-        <button class="btn scissors">Scissors</button>
-    </div>
+        <section class="results">
+            <p class="results-commentary"></p>
+            <p class="results-score"></p>
+        </section>
 
-    <section class="results">
-        <p class="results-commentary"></p>
-        <p class="results-score"></p>
-    </section>
-
-    <div class="reset">
-        <button class="btn-reset" hidden>Reset</button>
+        <div class="reset">
+            <button class="btn-reset" hidden>Reset</button>
+        </div>
     </div>
 </body>
 

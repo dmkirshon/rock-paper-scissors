@@ -12,6 +12,15 @@ html {
     font-family: 'Roboto', Arial, sans-serif;
   }
 
+  body {
+      display: flex;
+      justify-content: center;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   h1 {
     margin: 0;
     padding: 0;
@@ -26,3 +35,39 @@ html {
     margin: 0;
     padding: 0;
   }
+
+  button{
+      margin: 0;
+      padding: 0;
+  }
+
+  /* Title Style */
+
+  .title {
+  }
+
+  /* Buttons */
+
+  .btn.rock{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      border: 0 none;
+  }
+  .btn.scissors {
+        background-image: url(./images/rock-paper-scissors-296853.svg); 
+        min-width: 100px;
+        min-height: 100px;
+      }
+  
+  .btn-rock-img {
+      max-width: 100px;
+      border: 1px solid black
+    }
+
+
+    .btn-rock-img {
+        max-width: 100px;
+        min-width: 100px;
+      }
