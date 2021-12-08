@@ -115,9 +115,7 @@ function playGame() {
     // play a Round of RPS when button is clicked
     buttonChoices.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            console.log(e.target);
-            const playerSelection = getPlayerSelection(e.target.textContent);
-            console.log(playerSelection);
+            const playerSelection = getPlayerSelection(e.target.title);
             const computerSelection = computerPlay();
             const roundResult = playRound(playerSelection, computerSelection);
             const roundPhrase = getRoundPhrase(roundResult, playerSelection, computerSelection);
