@@ -56,7 +56,7 @@ html {
       border: 0 none;
   }
   .btn.scissors {
-        background-image: url(./images/rock-paper-scissors-296853.svg); 
+        background-image: url(./images/scissors.svg); 
         min-width: 100px;
         min-height: 100px;
       }
