@@ -50,7 +50,7 @@ html {
   .title {
   }
 
-  /* Buttons */
+  /* RPS Buttons */
   .btns {
     display: flex;
     justify-content: center;
@@ -81,7 +81,11 @@ html {
   .btn:hover:enabled {
     background-color: rgb(25, 209, 185);
     transform: scale(1.3);
-    box-shadow: 0px 0px 5px 10px rgba(46, 229, 156, 0.4);
+    box-shadow: 0px 0px 10px 10px rgba(46, 229, 156, 0.4);
+  }
+  .btn:active:enabled {
+    transition: all .05s ease-in-out;
+    transform: scale(.8);
   }
   .btn:disabled {
     background-color: lightgrey;
