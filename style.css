@@ -156,3 +156,15 @@ html {
   padding: 1em 0;
   gap: 1em;
 }
+
+/* New Game/Reset style */
+.reset {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-reset {
+  padding: 1em;
+  border: 5px grey ridge;
+  box-shadow: 0px 0px 10px 5px rgba(53, 53, 53, 0.4);
+}
