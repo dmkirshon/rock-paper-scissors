@@ -40,6 +40,11 @@ html {
     padding: 0;
   }
 
+  details {
+    margin: 1em 0 1.5em 0;
+    padding: 0;
+  }
+
   button{
       margin: 0;
       padding: 0;
@@ -48,6 +53,41 @@ html {
   /* Title Style */
 
   .title {
+    text-align: center;
+  }
+
+  /* Instructions Style*/
+
+  .instructions[open] summary ~ * {
+    animation: sweep 1.2s ease-in;
+  }
+  
+  @keyframes sweep {
+    0%    {opacity: 0; margin-left: -20px}
+    100%  {opacity: 1; margin-left: 0px}
+  }
+
+  summary {
+    font-weight: bold;
+    font-style: italic;
+    font-size: x-large;
+    text-align: center;
+  }
+
+  .instructions-description{
+    margin: 1em 0;
+    text-align: center;
+  }
+
+  .instructions-choices li{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  li img{
+    width: 64px;
   }
 
   /* RPS Buttons */
