@@ -99,7 +99,7 @@ function scoreGame(playerScore, computerScore) {
 function resetGame() {
     buttonReset.hidden = true;
     disableChoices(false);
-    resultCommentaryPara.textContent = '';
+    resultCommentaryPara.textContent = 'Pick an option above!';
     resultScorePara.textContent = '';
     playerScore = 0;
     computerScore = 0;
