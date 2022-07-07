@@ -1,11 +1,12 @@
-#Project: Rock, Paper and Scissors Game
+# Project: Rock, Paper and Scissors Game
 
-##Summary: This project uses javascript to create a user/computer rock, paper, and scissors game.
+## Summary: This project uses javascript to create a user/computer rock, paper, and scissors game.
+
 HTML/CSS is used with javascript DOM manipulation to provide a friendly UI.
 
 [Live Demo](https://dmkirshon.github.io/rock-paper-scissors/)
 
-##Skills:
+## Skills:
 
 1. Javascript
    - Use console.log to test/debug
